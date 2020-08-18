@@ -1,0 +1,66 @@
+{
+  "name": "gql_boilerplate",
+  "version": "2.5.0",
+  "repository": "git@github.com:matt-riley/gql_boilerplate.git",
+  "author": "Matt Riley <matt@mattriley.me> (https://mattriley.me)",
+  "license": "MIT",
+  "scripts": {
+    "build": "NODE_ENV=production babel src -d build --copy-files --no-comments && npm run update-schema",
+    "start:dev": "nodemon --watch src -e js,graphql --exec babel-node -- src/server/index.js",
+    "prestart": "npm run build",
+    "start": "node build/server/index.js",
+    "update-schema": "NODE_ENV=local babel-node ./scripts/build_schema.js",
+    "test": "npm run lint",
+    "test:only": "jest",
+    "lint": "eslint src",
+    "lint:fix": "eslint \"src/**/*.js\" --fix",
+    "release": "standard-version",
+    "commit": "npx git-cz",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
+  },
+  "dependencies": {
+    "apollo-datasource-rest": "0.9.3",
+    "apollo-server-express": "2.16.1",
+    "express": "4.17.1",
+    "graphql": "14.7.0",
+    "winston": "3.3.3",
+    "snyk": "^1.369.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.10.5",
+    "@babel/core": "7.10.5",
+    "@babel/node": "7.10.5",
+    "@babel/preset-env": "7.10.4",
+    "babel-plugin-transform-builtin-extend": "1.1.2",
+    "babel-plugin-transform-import-to-read-file-sync": "0.2.2",
+    "babel-preset-minify": "0.5.1",
+    "commitizen": "4.1.2",
+    "cz-conventional-changelog": "3.2.0",
+    "eslint": "7.5.0",
+    "eslint-config-airbnb-base": "14.2.0",
+    "eslint-plugin-import": "2.22.0",
+    "eslint-plugin-mocha": "7.0.1",
+    "jest": "26.1.0",
+    "nodemon": "2.0.4",
+    "npm-run-all": "4.1.5",
+    "standard-version": "8.0.1"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageReporters": [
+      "lcov"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "standard-version": {
+    "skip": {
+      "tag": true
+    }
+  },
+  "snyk": true
+}
