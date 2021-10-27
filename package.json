@@ -23,7 +23,7 @@
     "apollo-datasource-rest": "0.9.3",
     "apollo-server-express": "2.16.1",
     "express": "4.17.1",
-    "graphql": "14.7.0",
+    "graphql": "15.7.0",
     "winston": "3.3.3",
     "snyk": "^1.369.1"
   },
